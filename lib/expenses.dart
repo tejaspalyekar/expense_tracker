@@ -25,7 +25,8 @@ class _ExpenseState extends State<Expenses> {
       body: Column(
         children: [
           const Text("Chat"),
-          ExpensesList(registeredExpenses: _registeredExpenses),
+          Expanded(
+              child: ExpensesList(registeredExpenses: _registeredExpenses)),
         ],
       ),
     );
