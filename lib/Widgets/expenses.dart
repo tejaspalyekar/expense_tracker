@@ -40,18 +40,49 @@ class _ExpenseState extends State<Expenses> {
     });
   }
 
+  void removeexpense(Expense expense) {
+    final expenseIndex = _registeredExpenses.indexOf(expense);
+    setState(() {
+      _registeredExpenses.remove(expense);
+    });
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: const Text("Expense deleted"),
+      duration: const Duration(seconds: 3),
+      action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            setState(() {
+              _registeredExpenses.insert(expenseIndex, expense);
+            });
+          }),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
+    Widget maincontent = Center(
+      child: Image.asset('assets/No_data.gif', width: 600),
+    );
+    if (_registeredExpenses.isNotEmpty) {
+      maincontent = ExpensesList(
+        registeredExpenses: _registeredExpenses,
+        removeexpense: removeexpense,
+      );
+    }
+
     return Scaffold(
-      appBar: AppBar(title: const Text("Expense Tracker"), actions: [
-        IconButton(onPressed: _showoverlay, icon: const Icon(Icons.add))
-      ]),
+      appBar: AppBar(
+          title: const Text("Expense Tracker"),
+          backgroundColor: const Color.fromARGB(255, 75, 10, 179),
+          actions: [
+            IconButton(onPressed: _showoverlay, icon: const Icon(Icons.add))
+          ]),
       body: Column(
         children: [
           const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
           const Text("Chart"),
-          Expanded(
-              child: ExpensesList(registeredExpenses: _registeredExpenses)),
+          Expanded(child: maincontent),
         ],
       ),
     );
