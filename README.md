@@ -1,4 +1,5 @@
 This expense tracker application supports both dark and light theme modes it also has a chart that compares the amount spent
+<img src"https://github.com/tejaspalyekar/expense_tracker/blob/4d1362c6c31094648517b83d263beb486ee15e1c/Application%20Output/Screenshot%202023-06-17%20112534.png" width=500 height=300>
 
 ![Screenshot_1686981014](https://github.com/tejaspalyekar/expense_tracker/assets/66875860/84a4883a-c63c-4655-b51c-de4a7e81a2d5|)
 ![Screenshot_1686981356](https://github.com/tejaspalyekar/expense_tracker/assets/66875860/3908f747-525a-457c-97f3-482e5c951c60)
