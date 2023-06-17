@@ -1,5 +1,6 @@
 import 'package:expense_tracker/Widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/Widgets/new_expense.dart';
+import 'package:expense_tracker/chart/chart.dart';
 import 'package:expense_tracker/model/expense.dart';
 import 'package:flutter/material.dart';
 
@@ -72,19 +73,36 @@ class _ExpenseState extends State<Expenses> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-          title: const Text("Expense Tracker"),
-          backgroundColor: const Color.fromARGB(255, 75, 10, 179),
-          actions: [
-            IconButton(onPressed: _showoverlay, icon: const Icon(Icons.add))
-          ]),
+      appBar: AppBar(title: const Text("Expense Tracker"), actions: [
+        IconButton(onPressed: _showoverlay, icon: const Icon(Icons.add))
+      ]),
       body: Column(
         children: [
           const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-          const Text("Chart"),
+          Chart(expenses: _registeredExpenses),
           Expanded(child: maincontent),
         ],
       ),
     );
+  }
+}
+
+class ExpenseBucket {
+  const ExpenseBucket({required this.category, required this.expenses});
+
+  ExpenseBucket.forCategory(List<Expense> allExpenses, this.category)
+      : expenses = allExpenses
+            .where((expense) => expense.category == category)
+            .toList();
+
+  final Category category;
+  final List<Expense> expenses;
+
+  double get totalExpenses {
+    double sum = 0;
+    for (final expense in expenses) {
+      sum += expense.amount;
+    }
+    return sum;
   }
 }
