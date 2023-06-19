@@ -62,6 +62,10 @@ class _ExpenseState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    print(width);
+    print(height);
     Widget maincontent = Center(
       child: Image.asset('assets/No_data.gif', width: 600),
     );
@@ -76,13 +80,21 @@ class _ExpenseState extends State<Expenses> {
       appBar: AppBar(title: const Text("Expense Tracker"), actions: [
         IconButton(onPressed: _showoverlay, icon: const Icon(Icons.add))
       ]),
-      body: Column(
-        children: [
-          const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-          Chart(expenses: _registeredExpenses),
-          Expanded(child: maincontent),
-        ],
-      ),
+      body: width < 600
+          ? Column(
+              children: [
+                const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+                Chart(expenses: _registeredExpenses),
+                Expanded(child: maincontent),
+              ],
+            )
+          : Row(
+              children: [
+                const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+                Expanded(child: Chart(expenses: _registeredExpenses)),
+                Expanded(child: maincontent),
+              ],
+            ),
     );
   }
 }
