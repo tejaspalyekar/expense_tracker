@@ -10,3 +10,8 @@ This expense tracker application supports both dark and light theme modes it als
 
 ![Screenshot 2023-06-17 112534](https://github.com/tejaspalyekar/expense_tracker/assets/66875860/2f3f6815-9244-4e91-86ef-1db56aa1754c)
 ![Screenshot 2023-06-17 120750](https://github.com/tejaspalyekar/expense_tracker/assets/66875860/705ae794-bc6c-4044-8f35-a18c32986e13)
+
+Responsiveness:
+![Screenshot 2023-06-20 003934](https://github.com/tejaspalyekar/expense_tracker/assets/66875860/1546b817-6bc8-4139-848c-952e4913cd66)
+![Screenshot 2023-06-20 003952](https://github.com/tejaspalyekar/expense_tracker/assets/66875860/b30326e8-aa02-45e7-bb2c-61c7c6dffb58)
+
